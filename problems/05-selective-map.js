@@ -42,8 +42,23 @@ AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
 - How many times are you calling each callback function?
 *******************************************************************************/
 
-let selectiveMap = function() {
+let selectiveMap = function(arr, cbCheck, cbEval) {
+    // cbCheck(el) - expecting boolean return
+    // cbEval(el) - expecting any result from evaluation cbEval function on parameter.
+    // cbCheck is calling on every element of arr
+    // cbEval is calling on elements, which passed cbCheck 
+    
+    let newArr = [];
 
+    for (let i = 0; i < arr.length; i++) {
+        let el = arr[i];
+        if (cbCheck(el)) {
+            newArr[i] = cbEval(el);
+        } else {
+            newArr[i] = el;
+        }
+    }
+    return newArr;
 };
 
 
