@@ -31,8 +31,20 @@ console.log(suffixCipher('incremental progress is very instrumental', cipher2));
 // INCREMENTAL progressth isth very INSTRUMENTAL
 *******************************************************************************/
 
-let suffixCipher = function() {
+let suffixCipher = function(sentence, Suffixes) {
+    let words = sentence.split(" ");
 
+    let newWords = words.map(function(word) {        
+        for (let key in Suffixes) {
+            let suffix = key; cb = Suffixes[key]
+          if (word.endsWith(suffix)) {
+            return cb(word);
+          }
+        }
+        return word;
+    })
+
+    return newWords.join(" ");
 };
 
 

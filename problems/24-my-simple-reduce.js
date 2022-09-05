@@ -34,11 +34,25 @@ AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
   optional initial accumulator
 *******************************************************************************/
 
-let mySimpleReduce = function() {
+let mySimpleReduce = function(arr, cb) {
+    let accum = arr[0];
 
+    for (let i = 1; i < arr.length; i++) {
+        let el = arr[i];
+        accum = cb(accum, el)
+    }
+    
+    return accum;
 };
-
-
+/* Refactoring:
+1 Add 3rd parameter to function, init
+2 Add if - check if 3rd argument is present (not undefined).
+3 If init argument is present, than first assignment change to new init value, let accum = init  .
+  Also adding here new variable, iInit and set it to 0.
+4 If init argument is absent, then accum = arr[0], as it was. And iInit is set to 1
+5 Change initial i counter in loop from 1 to iInit to call cb function on 0 element 
+  also if initial value is present.
+*/
 
 
 
